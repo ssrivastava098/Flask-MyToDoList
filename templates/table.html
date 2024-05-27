@@ -1,0 +1,34 @@
+<div class="container my-3">
+    <h2>My ToDo List</h2>
+    <table class="table">
+        {% if allToDo|length == 0 %}
+        <div class="alert alert-dark" role="alert">
+            No ToDo items found. Please add a new ToDo item using the form above.
+        </div>
+        {% else %}
+        <thead class="text-center">
+            <tr>
+                <th scope="col">Sl. No.</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Time</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+        
+        
+            {% for ToDo in allToDo %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{ToDo.ToDo_Title}}</td>
+                <td>{{ToDo.ToDo_Desc}}</td>
+                <td>{{ToDo.date_created}}</td>
+                <td><a href="/delete/{{ToDo.Slno}}" class="btn btn-outline-dark btn-sm mx-1">Delete</a><a href="/update/{{ToDo.Slno}}" class="btn btn-outline-dark btn-sm">Update</a></td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+            
+        </tbody>
+    </table>
+</div>
